@@ -24,13 +24,13 @@ exports.generateChangeLogContent = async ({ releaseDate, issues, mergeRequests }
   // Separate by labels
   let changelogBucket = exports._createLabelBucket();
 
-  exports._populateIssuesWithBucketByIssue(changelogBucket, issues, options);
+  // exports._populateIssuesWithBucketByIssue(changelogBucket, issues, options);
 
   exports._populateMergeRequestsWithBucketByMergeRequests(changelogBucket, mergeRequests, options);
 
   const labelConfigs = [
     ...LABEL_CONFIG,
-    { name: "issues", title: "Closed issues", default: true },
+    // { name: "issues", title: "Closed issues", default: true },
     { name: "mergeRequests", title: "Merged merge requests", default: true }
   ];
   if (options.useSlack) {
@@ -69,8 +69,8 @@ exports._populateIssuesWithBucketByIssue = (bucket, issues, options = {}) => {
     let added = false;
     for (const label of issue.labels || []) {
       if (_.has(bucket, label)) {
-        bucket[label].push(IssueLib.decorateIssue(issue, options));
-        added = true;
+        // bucket[label].push(IssueLib.decorateIssue(issue, options));
+        // added = true;
       }
     }
     if (!added) bucket.issues.push(IssueLib.decorateIssue(issue, options));

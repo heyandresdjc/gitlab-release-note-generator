@@ -1,3 +1,5 @@
 .circleci
 .coverage
 .git
+node_modules/
+jspm_packages/
